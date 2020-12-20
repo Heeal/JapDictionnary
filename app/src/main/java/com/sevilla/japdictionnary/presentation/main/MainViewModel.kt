@@ -1,4 +1,4 @@
-package com.sevilla.japdictionnary
+package com.sevilla.japdictionnary.presentation.main
 
 import androidx.lifecycle.ViewModel
 
