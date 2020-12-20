@@ -3,6 +3,7 @@ package com.sevilla.japdictionnary.presentation.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sevilla.japdictionnary.R
+import com.sevilla.japdictionnary.domain.usecase.createKanjiListUseCase
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -14,5 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mainViewModel.onStart()
+
     }
 }
