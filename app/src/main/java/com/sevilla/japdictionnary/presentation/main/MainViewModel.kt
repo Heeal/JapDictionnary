@@ -1,11 +1,9 @@
 package com.sevilla.japdictionnary.presentation.main
 
-import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sevilla.japdictionnary.R
 import com.sevilla.japdictionnary.domain.entity.Kanji
 import com.sevilla.japdictionnary.domain.usecase.createKanjiListUseCase
 import kotlinx.coroutines.launch
@@ -18,11 +16,16 @@ class MainViewModel(
     fun dataset(): LiveData<ArrayList<Kanji>> {
         return _dataset
     }
-    var done = false
     fun onStart(){
         viewModelScope.launch {
-            _dataset.postValue(createKanjiListUseCase.invoke()!!)
-           done = true
+            _dataset.postValue(createKanjiListUseCase.invoke("n5")!!)
+        }
+    }
+
+    fun search(search : String){
+        viewModelScope.launch {
+            _dataset.value = createKanjiListUseCase.invoke(search)!!
+            print("aa")
         }
     }
 }

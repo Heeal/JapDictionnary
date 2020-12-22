@@ -3,6 +3,7 @@ package com.sevilla.japdictionnary.presentation.main
 import RecyclerViewAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sevilla.japdictionnary.R
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity() {
             kanji_recycler_view.layoutManager = LinearLayoutManager(this)
             kanji_recycler_view.adapter = RecyclerViewAdapter(mainViewModel.dataset())
         })
+
+        search_button.setOnClickListener(){
+            mainViewModel.search(search_input.text.toString())
+        }
     }
 
 }

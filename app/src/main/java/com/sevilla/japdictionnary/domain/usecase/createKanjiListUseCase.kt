@@ -11,8 +11,8 @@ import kotlinx.coroutines.delay
 class createKanjiListUseCase(
     private val kanjiRepository: KanjiRepository
 ){
-    suspend fun invoke(): ArrayList<Kanji>?{
-        kanjiRepository.createKanjiList();
+    suspend fun invoke(search : String): ArrayList<Kanji>?{
+        kanjiRepository.createKanjiList(search);
         var i : Long = 0
         while(i<200){
             delay(1000)

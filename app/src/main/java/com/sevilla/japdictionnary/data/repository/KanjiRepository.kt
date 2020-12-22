@@ -12,8 +12,8 @@ class KanjiRepository {
     var kanjiList = ArrayList<Kanji>()
     var done = false
 
-    suspend fun createKanjiList(){
-
+    suspend fun createKanjiList(search:String){
+        done = false
         val gson: Gson = GsonBuilder()
             .setLenient()
             .create()
@@ -24,7 +24,7 @@ class KanjiRepository {
             .build()
 
         val API = retrofit.create(kanjiService::class.java)
-        val API_Request = API.getKanjiFromLevel()
+        val API_Request = API.getKanjiFromSearch(search)
 
         API_Request.enqueue(object : Callback<APIResponse> {
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
@@ -44,8 +44,4 @@ class KanjiRepository {
 
     }
 
-    suspend fun getKanjiList(): List<Kanji>? {
-        return kanjiList
     }
-
-}
