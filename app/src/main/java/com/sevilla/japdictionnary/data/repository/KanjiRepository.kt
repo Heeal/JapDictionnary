@@ -9,7 +9,7 @@ import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class KanjiRepository {
-    var kanjiList : List<Kanji>? = null;
+    var kanjiList = ArrayList<Kanji>()
     var done = false
 
     suspend fun createKanjiList(){
@@ -25,12 +25,6 @@ class KanjiRepository {
 
         val API = retrofit.create(kanjiService::class.java)
         val API_Request = API.getKanjiFromLevel()
-
-
-
-        var kanjiList : List<Kanji>
-
-
 
         API_Request.enqueue(object : Callback<APIResponse> {
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
