@@ -1,5 +1,7 @@
 package com.sevilla.japdictionnary.presentation.main
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +13,7 @@ import com.sevilla.japdictionnary.domain.usecase.createKanjiListUseCase
 import com.sevilla.japdictionnary.domain.usecase.getKanjiUseCase
 import com.sevilla.japdictionnary.domain.usecase.storeKanjiUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -44,7 +47,10 @@ class MainViewModel(
             storeKanjiUseCase.invoke(Kanji("子", japanese = read, senses = sense_arr))
             delay(1000)
             var Kanji = getKanjiUseCase.getByKanji("子")
-            print(Kanji)
         }
+    }
+
+    fun onSaveClick(position : Int){
+
     }
 }

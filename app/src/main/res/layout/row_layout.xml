@@ -31,13 +31,25 @@
         android:textAlignment="center"
         android:textSize="12sp" />
 
+
     <TextView
         android:id="@+id/meaning_text_view"
-        android:layout_width="242dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="177dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="16dp"
         android:text="Traduction: School" />
+
+    <ImageView
+        android:id="@+id/save_image_view"
+        android:layout_width="40dp"
+        android:onClick="@{()-> .onSaveClick(item)"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/meaning_text_view"
+        android:src="@drawable/ic_save" />
 </RelativeLayout>
