@@ -8,6 +8,7 @@ import com.sevilla.japdictionnary.data.local.DatabaseDAO
 import com.sevilla.japdictionnary.data.repository.KanjiRepository
 import com.sevilla.japdictionnary.domain.usecase.createKanjiListUseCase
 import com.sevilla.japdictionnary.domain.usecase.getKanjiUseCase
+import com.sevilla.japdictionnary.domain.usecase.getStoredKanjiUseCase
 import com.sevilla.japdictionnary.domain.usecase.storeKanjiUseCase
 import com.sevilla.japdictionnary.presentation.main.MainActivity
 import com.sevilla.japdictionnary.presentation.main.MainViewModel
@@ -16,13 +17,14 @@ import org.koin.dsl.module
 
 val presentationModule = module{
     single { MainActivity() }
-    factory{ MainViewModel(get(), get(), get()) }
+    factory{ MainViewModel(get(), get(), get(), get()) }
 }
 
 val domainModule = module{
     factory{ createKanjiListUseCase(get()) }
     factory { getKanjiUseCase(get()) }
     factory { storeKanjiUseCase(get()) }
+    factory { getStoredKanjiUseCase(get()) }
 }
 
 val dataModule = module{

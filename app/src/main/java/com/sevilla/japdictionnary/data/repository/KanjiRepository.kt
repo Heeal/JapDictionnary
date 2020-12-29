@@ -57,4 +57,13 @@ class KanjiRepository(
         databaseDAO.insert(kanjis)
     }
 
+    fun getAllKanji() : ArrayList<Kanji>{
+        val temp : List<KanjiLocal> = databaseDAO.getAll()
+        val arr = ArrayList<Kanji>()
+        temp.forEach(){
+            arr.add(it.toEntity())
+        }
+        return arr
+    }
+
     }

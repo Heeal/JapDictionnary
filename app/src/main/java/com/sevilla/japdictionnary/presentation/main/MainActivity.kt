@@ -26,8 +26,9 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.onStart()
 
         val listener = object: RecyclerViewAdapter.CustomViewHolderListener {
-            override fun onCustomItemClicked(x: Kanji) {
-                Toast.makeText(applicationContext, "clicked : "+x.slug, Toast.LENGTH_SHORT).show()  
+            override fun onCustomItemClicked(item: Kanji) {
+                Toast.makeText(applicationContext, "Added "+item.slug+" to your list", Toast.LENGTH_SHORT).show()
+                mainViewModel.onSaveClick(item)
             }
         }
 
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         search_button.setOnClickListener(){
             mainViewModel.search(search_input.text.toString())
+        }
+
+        my_list_button.setOnClickListener(){
+            mainViewModel.showMyList()
         }
     }
 }

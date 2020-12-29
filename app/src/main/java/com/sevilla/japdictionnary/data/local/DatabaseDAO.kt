@@ -9,7 +9,7 @@ import com.sevilla.japdictionnary.data.local.models.KanjiLocal
 
 @Dao
 interface DatabaseDAO {
-    @Query("SELECT * from KanjiLocal")
+    @Query("SELECT * from KanjiLocal GROUP BY kanji")
     fun getAll(): List<KanjiLocal>
 
     @Query("SELECT * from KanjiLocal WHERE uid LIKE :uid LIMIT 1")
